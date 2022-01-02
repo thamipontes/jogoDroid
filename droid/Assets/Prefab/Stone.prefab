@@ -179,6 +179,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 06e2e26586a93c68ab58cd858fd57ebb, type: 3}
   - {fileID: 21300000, guid: 388f647d9df2d0055bd196151771061c, type: 3}
   - {fileID: 21300000, guid: 4f379ec96146c6126bcef4c33c4e0f4b, type: 3}
+  - {fileID: 21300000, guid: 058679279083a63449adf5b4772ec716, type: 3}
   isBroken: 0
   inventory: {fileID: 0}
   inventoryFullHUD: {fileID: 0}

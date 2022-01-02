@@ -15,7 +15,9 @@ public static class Constants
         Fios,
         Bateria,
         Engrenagem,
-        Parafuso
+        Parafuso,
+        Chave
+        
     };
 
 }

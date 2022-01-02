@@ -14,6 +14,7 @@ public class InventoryCar : MonoBehaviour
     public Sprite Bateria; 
     public Sprite Engrenagem;
     public Sprite Parafuso;
+    public Sprite Chave;
 
     //public int[] pontos = new int[] { 0, 0, 0, 0 };
 
@@ -51,6 +52,10 @@ public class InventoryCar : MonoBehaviour
         else if (obj == Engrenagem)
         {
             return (int)Constants.Ore.Engrenagem;
+        }
+        else if (obj == Chave)
+        {
+            return (int)Constants.Ore.Chave;
         }
         return (int)Constants.Ore.Parafuso;
     }

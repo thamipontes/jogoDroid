@@ -11,16 +11,18 @@ public class MoneyCalculator : MonoBehaviour
     public Text granadaMoney;
     public Text esmeraldaMoney;
     public Text turmalinaMoney;
+    public Text chaveMoney;
 
     public Text totalMoney;
 
     bool timeIsUp = false;
     bool canClose = false;
     
-    int moneyDolerito = 0;
-    int moneyGranada = 0;
-    int moneyEsmeralda = 0;
-    int moneyTurmalina = 0;
+    int moneyFios = 0;
+    int moneyBateria = 0;
+    int moneyEngrenagem = 0;
+    int moneyParafuso = 0;
+    int moneyChave = 0;
 
     public Goal goal = null;
     public PlayerManager player;
@@ -50,20 +52,22 @@ public class MoneyCalculator : MonoBehaviour
         timeIsUp = false;
         canClose = false;
 
-        moneyDolerito = 0;
-        moneyGranada = 0;
-        moneyEsmeralda = 0;
-        moneyTurmalina = 0;
+        moneyFios = 0;
+        moneyBateria = 0;
+        moneyEngrenagem = 0;
+        moneyParafuso = 0;
+        moneyChave = 0;
     }
 
     public void Calculate()
     {
         var collectedOres = inventoryCar.collectedOres;
-        moneyDolerito = CalculateOre(inventoryCar.collectedOres, Constants.Ore.Fios);
-        moneyGranada = CalculateOre(inventoryCar.collectedOres, Constants.Ore.Bateria);
-        moneyEsmeralda = CalculateOre(inventoryCar.collectedOres, Constants.Ore.Engrenagem);
-        moneyTurmalina = CalculateOre(inventoryCar.collectedOres, Constants.Ore.Parafuso);
-
+        moneyFios = CalculateOre(inventoryCar.collectedOres, Constants.Ore.Fios);
+        moneyBateria = CalculateOre(inventoryCar.collectedOres, Constants.Ore.Bateria);
+        moneyEngrenagem = CalculateOre(inventoryCar.collectedOres, Constants.Ore.Engrenagem);
+        moneyParafuso = CalculateOre(inventoryCar.collectedOres, Constants.Ore.Parafuso);
+        moneyChave = CalculateOre(inventoryCar.collectedOres, Constants.Ore.Chave);
+        
         Text(inventoryCar.collectedOres);
     }
 
@@ -71,23 +75,26 @@ public class MoneyCalculator : MonoBehaviour
     {
         foreach (var ore in ores)
         {
-            switch (ore.oreType)
+            switch (ore.oreType) 
             {
                 case (int)Constants.Ore.Fios:
-                    doleritoMoney.text = ore.amount + " x 2 açais = " + moneyDolerito;
+                    doleritoMoney.text = ore.amount + " x 2 açais = " + moneyFios;
                     break;
                 case (int)Constants.Ore.Bateria:
-                    granadaMoney.text = ore.amount + " x 1 paçoca = " + moneyGranada;
+                    granadaMoney.text = ore.amount + " x 1 paçoca = " + moneyBateria;
                     break;
                 case (int)Constants.Ore.Engrenagem:
-                    esmeraldaMoney.text = ore.amount + " x 1 açai = " + moneyEsmeralda;
+                    esmeraldaMoney.text = ore.amount + " x 1 açai = " + moneyEngrenagem;
                     break;
                 case (int)Constants.Ore.Parafuso:
-                    turmalinaMoney.text = ore.amount + " x 2 paçocas = " + moneyTurmalina;
+                    turmalinaMoney.text = ore.amount + " x 2 paçocas = " + moneyParafuso;
+                    break;
+                case (int)Constants.Ore.Chave:
+                    chaveMoney.text = ore.amount + " x me vê 3 = " + moneyChave;
                     break;
             }
         }
-        total = moneyDolerito + moneyGranada + moneyEsmeralda + moneyTurmalina;
+        total = moneyFios + moneyBateria + moneyEngrenagem + moneyParafuso;
         totalMoney.text = total + " gold";
     }
 
@@ -111,6 +118,9 @@ public class MoneyCalculator : MonoBehaviour
                         break;
                     case Constants.Ore.Parafuso:
                         total = ore.amount * 2;
+                        break;
+                    case Constants.Ore.Chave:
+                        total = ore.amount * 0;
                         break;
                 }
             }

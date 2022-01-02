@@ -50,7 +50,11 @@ public class DropItem : MonoBehaviour
     void ChooseOreType()
     {
         var valorAleatorio = UnityEngine.Random.Range(0f, 1f);
-        if (valorAleatorio < 0.45) //45% MIN�RIO MENOS VALIOSO
+        if (valorAleatorio < 0.30)
+        {
+            oreType = (int) Constants.Ore.Chave;
+        }
+        else if (valorAleatorio < 0.45)  //45% MIN�RIO MENOS VALIOSO
         {
             oreType = (int)Constants.Ore.Fios;
         }
@@ -79,7 +83,7 @@ public class DropItem : MonoBehaviour
 
                // hitAudio.Play();
 
-                int test = oreType;
+               
                 this.GetComponent<SpriteRenderer>().sprite = dropItem[(int)oreType];
                 StartCoroutine(ForceClickFalse(playerManager, 0.7f));
                 isBroken = true;
