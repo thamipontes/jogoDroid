@@ -10,6 +10,7 @@
           <e p="script" t="Include">
             <e p="MapGenerator.cs" t="Include" />
             <e p="ObjectInfo.cs" t="Include" />
+            <e p="PlayerMove.cs" t="Include" />
           </e>
         </e>
         <e p="Scripts" t="Include">

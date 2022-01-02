@@ -52,19 +52,19 @@ public class DropItem : MonoBehaviour
         var valorAleatorio = UnityEngine.Random.Range(0f, 1f);
         if (valorAleatorio < 0.45) //45% MIN�RIO MENOS VALIOSO
         {
-            oreType = (int)Constants.Ore.Dolerito;
+            oreType = (int)Constants.Ore.Fios;
         }
         else if (0.45 < valorAleatorio && valorAleatorio < 0.75) //30%
         {
-            oreType = (int)Constants.Ore.Granada;
+            oreType = (int)Constants.Ore.Bateria;
         }
         else if (0.75 < valorAleatorio && valorAleatorio < 0.92) //17%
         {
-            oreType = (int)Constants.Ore.Esmeralda;
+            oreType = (int)Constants.Ore.Engrenagem;
         }
         else //8% MIN�RIO MAIS VALIOSO
         {
-            oreType = (int)Constants.Ore.Turmalina;
+            oreType = (int)Constants.Ore.Parafuso;
         }
     }
 
@@ -79,6 +79,7 @@ public class DropItem : MonoBehaviour
 
                // hitAudio.Play();
 
+                int test = oreType;
                 this.GetComponent<SpriteRenderer>().sprite = dropItem[(int)oreType];
                 StartCoroutine(ForceClickFalse(playerManager, 0.7f));
                 isBroken = true;

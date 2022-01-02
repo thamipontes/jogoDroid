@@ -12,10 +12,10 @@ public static class Constants
 
     public enum Ore
     {
-        Dolerito,
-        Granada,
-        Esmeralda,
-        Turmalina
+        Fios,
+        Bateria,
+        Engrenagem,
+        Parafuso
     };
 
 }

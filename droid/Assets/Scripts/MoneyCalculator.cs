@@ -39,7 +39,7 @@ public class MoneyCalculator : MonoBehaviour
         if (timeIsUp && canClose &&(Input.GetMouseButton(0) || Input.GetKeyDown(KeyCode.Space) ) )
         {
             OpenMoneyCalculator();
-            goal.CalculateWinOrLose();
+            // goal.CalculateWinOrLose();
         }
     }
     
@@ -59,10 +59,10 @@ public class MoneyCalculator : MonoBehaviour
     public void Calculate()
     {
         var collectedOres = inventoryCar.collectedOres;
-        moneyDolerito = CalculateOre(inventoryCar.collectedOres, Constants.Ore.Dolerito);
-        moneyGranada = CalculateOre(inventoryCar.collectedOres, Constants.Ore.Granada);
-        moneyEsmeralda = CalculateOre(inventoryCar.collectedOres, Constants.Ore.Esmeralda);
-        moneyTurmalina = CalculateOre(inventoryCar.collectedOres, Constants.Ore.Turmalina);
+        moneyDolerito = CalculateOre(inventoryCar.collectedOres, Constants.Ore.Fios);
+        moneyGranada = CalculateOre(inventoryCar.collectedOres, Constants.Ore.Bateria);
+        moneyEsmeralda = CalculateOre(inventoryCar.collectedOres, Constants.Ore.Engrenagem);
+        moneyTurmalina = CalculateOre(inventoryCar.collectedOres, Constants.Ore.Parafuso);
 
         Text(inventoryCar.collectedOres);
     }
@@ -73,17 +73,17 @@ public class MoneyCalculator : MonoBehaviour
         {
             switch (ore.oreType)
             {
-                case (int)Constants.Ore.Dolerito:
-                    doleritoMoney.text = ore.amount + " x 1 gold = " + moneyDolerito;
+                case (int)Constants.Ore.Fios:
+                    doleritoMoney.text = ore.amount + " x 2 açais = " + moneyDolerito;
                     break;
-                case (int)Constants.Ore.Granada:
-                    granadaMoney.text = ore.amount + " x 2 gold = " + moneyGranada;
+                case (int)Constants.Ore.Bateria:
+                    granadaMoney.text = ore.amount + " x 1 paçoca = " + moneyGranada;
                     break;
-                case (int)Constants.Ore.Esmeralda:
-                    esmeraldaMoney.text = ore.amount + " x 4 gold = " + moneyEsmeralda;
+                case (int)Constants.Ore.Engrenagem:
+                    esmeraldaMoney.text = ore.amount + " x 1 açai = " + moneyEsmeralda;
                     break;
-                case (int)Constants.Ore.Turmalina:
-                    turmalinaMoney.text = ore.amount + " x 10 gold = " + moneyTurmalina;
+                case (int)Constants.Ore.Parafuso:
+                    turmalinaMoney.text = ore.amount + " x 2 paçocas = " + moneyTurmalina;
                     break;
             }
         }
@@ -100,17 +100,17 @@ public class MoneyCalculator : MonoBehaviour
             {
                 switch (oreType)
                 {
-                    case Constants.Ore.Dolerito:
-                        total = ore.amount * 1;
-                        break;
-                    case Constants.Ore.Granada:
+                    case Constants.Ore.Fios:
                         total = ore.amount * 2;
                         break;
-                    case Constants.Ore.Esmeralda:
-                        total = ore.amount * 4;
+                    case Constants.Ore.Bateria:
+                        total = ore.amount * 1;
                         break;
-                    case Constants.Ore.Turmalina:
-                        total = ore.amount * 10;
+                    case Constants.Ore.Engrenagem:
+                        total = ore.amount * 1;
+                        break;
+                    case Constants.Ore.Parafuso:
+                        total = ore.amount * 2;
                         break;
                 }
             }
@@ -122,20 +122,24 @@ public class MoneyCalculator : MonoBehaviour
     {
         player.canMove = false;
         var child = this.transform.GetChild(0);
-        if (child.gameObject.activeSelf)
-        {
-            child.gameObject.SetActive(false);
-            Time.timeScale = 1;
-            timeIsUp = false;
-        }
-        else
-        {
-            child.gameObject.SetActive(true);
-            timeIsUp = true;
-            Calculate();
-            StartCoroutine(CanClose());
-            StartCoroutine(AutomaticGoal());
-        }
+        
+        child.gameObject.SetActive(true);
+        timeIsUp = true;
+        Calculate();
+        StartCoroutine(CanClose());
+        StartCoroutine(AutomaticGoal());
+        
+        //
+        // if (child.gameObject.activeSelf)
+        // {
+        //     child.gameObject.SetActive(false);
+        //     Time.timeScale = 1;
+        //     timeIsUp = false;
+        // }
+        // else
+        // {
+        //
+        // }
     }
 
     IEnumerator CanClose()
@@ -151,7 +155,7 @@ public class MoneyCalculator : MonoBehaviour
         if (timeIsUp) {
             player.canMove = true;
             OpenMoneyCalculator();
-            goal.CalculateWinOrLose();
+            // goal.CalculateWinOrLose();
         }
     }
 }

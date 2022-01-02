@@ -10,10 +10,10 @@ public class InventoryCar : MonoBehaviour
     Sprite obj3;
     Sprite obj4;
 
-    public Sprite Dolerito;
-    public Sprite Granada;
-    public Sprite Esmeralda;
-    public Sprite Turmalina;
+    public Sprite Fios;
+    public Sprite Bateria; 
+    public Sprite Engrenagem;
+    public Sprite Parafuso;
 
     //public int[] pontos = new int[] { 0, 0, 0, 0 };
 
@@ -40,19 +40,19 @@ public class InventoryCar : MonoBehaviour
 
     public int SwitchOre(Sprite obj)
     {
-        if (obj == Dolerito)
+        if (obj == Fios)
         {
-            return (int)Constants.Ore.Dolerito;
+            return (int)Constants.Ore.Fios;
         }
-        else if (obj == Granada)
+        else if (obj == Bateria)
         {
-            return (int)Constants.Ore.Granada;
+            return (int)Constants.Ore.Bateria;
         }
-        else if (obj == Esmeralda)
+        else if (obj == Engrenagem)
         {
-            return (int)Constants.Ore.Esmeralda;
+            return (int)Constants.Ore.Engrenagem;
         }
-        return (int)Constants.Ore.Turmalina;
+        return (int)Constants.Ore.Parafuso;
     }
 
     public void AddInventoryImage()
